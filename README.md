@@ -3,4 +3,4 @@
 <br /><br />
 To run the application:
 1. Navigate to the root project directory
-2. In the terminal, run: ```./gradlew run --args="INPUT_FILE=jukebox-input.txt"```
+2. In the terminal, run: ```./gradlew run --args="INPUT_FILE=input.txt"```
