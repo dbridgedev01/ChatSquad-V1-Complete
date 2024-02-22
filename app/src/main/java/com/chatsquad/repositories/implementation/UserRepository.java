@@ -11,11 +11,11 @@ public class UserRepository implements IUserRepository {
 
     private final Map<String, User> userMap;
 
-    public UserRepository(){
+    public UserRepository() {
         userMap = new HashMap<String, User>();
     }
 
-    public UserRepository(Map<String,User> userMap){
+    public UserRepository(Map<String, User> userMap) {
         this.userMap = userMap;
     }
 

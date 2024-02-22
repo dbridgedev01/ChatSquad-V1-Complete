@@ -50,11 +50,12 @@ public class GroupService implements IGroupService {
     public String removeMemberFromGroup(String groupId, String adminId, String memberId) {
         Group group = groupRepository.findById(groupId).orElseThrow(() -> new UserNotFoundException("Group not found"));
         User admin = userRepository.findById(adminId).orElseThrow(() -> new UserNotFoundException("User not found"));
-        User memberToRemove = userRepository.findById(memberId).orElseThrow(() -> new UserNotFoundException("User not found"));
+        User memberToRemove = userRepository.findById(memberId)
+                .orElseThrow(() -> new UserNotFoundException("User not found"));
         if (!group.getAdmin().equals(admin))
             throw new ForbiddenException("Forbidden");
         group.removeMember(memberToRemove);
-    
+
         return "User " + memberId + " removed successfully";
     }
 
@@ -64,11 +65,12 @@ public class GroupService implements IGroupService {
         User user = userRepository.findById(memberId).orElseThrow(() -> new UserNotFoundException("User not found"));
         String output = "";
 
-        if(group.getAdmin().equals(user) || group.getMembers().contains(user)){
+        if (group.getAdmin().equals(user) || group.getMembers().contains(user)) {
             String groupName = group.getGroupName();
             String adminUsername = group.getAdmin().getUserName();
-            List <String> usernames = group.getMembers().stream().map(u -> u.getUserName()).collect(Collectors.toList());
-            output = String.format("%s Members: %s - Admin, %s", groupName, adminUsername, String.join(", ", usernames));
+            List<String> usernames = group.getMembers().stream().map(u -> u.getUserName()).collect(Collectors.toList());
+            output = String.format("%s Members: %s - Admin, %s", groupName, adminUsername,
+                    String.join(", ", usernames));
         }
 
         else {

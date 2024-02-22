@@ -23,7 +23,6 @@ import com.chatsquad.repositories.IGroupRepository;
 import com.chatsquad.repositories.IUserRepository;
 import com.chatsquad.services.implementation.GroupService;
 
-
 @DisplayName("GroupServiceTest")
 @ExtendWith(MockitoExtension.class)
 public class GroupServiceTest {
@@ -39,39 +38,39 @@ public class GroupServiceTest {
 
     @Test
     @DisplayName("createGroup method should create a Group")
-    public void create_ShouldReturnSuccessString(){
+    public void createGroup_ShouldReturnSuccessString() {
 
-        List<User> members = new ArrayList<User>(){
-            {
-            add(new User("2", "Porro", "porro2"));
-            add(new User("3", "Dejan", "dejank"));
-            add(new User("4", "Vicario", "venom"));
-            }
-        };
-
-        List <String> memberIds = new ArrayList<String>(){
-            {
-            add("2");
-            add("3");
-            add("4");
-            }
-        };
-        
         User admin = new User("1", "Abdul", "abdx");
-        
-        //Arrange
+
+        List<User> members = new ArrayList<User>() {
+            {
+                add(new User("2", "Porro", "porro2"));
+                add(new User("3", "Dejan", "dejank"));
+                add(new User("4", "Vicario", "venom"));
+            }
+        };
+
+        List<String> memberIds = new ArrayList<String>() {
+            {
+                add("2");
+                add("3");
+                add("4");
+            }
+        };
+
+        // Arrange
         Group expectedGroup = new Group("1", "TEST_GROUP", admin, members);
         String expectedOutput = "Group " + expectedGroup.getId() + " created successfully";
-        
+
         when(userRepositoryMock.findById(any(String.class))).thenReturn(Optional.of(admin));
         when(groupRepositoryMock.save(any(Group.class))).thenReturn(expectedGroup);
 
-        //Act
-        String actualOutput = groupService.createGroup("TEST_GROUP","1", memberIds);
+        // Act
+        String actualOutput = groupService.createGroup("TEST_GROUP", "1", memberIds);
 
-        //Assert
-        Assertions.assertEquals(expectedOutput,actualOutput);
-        verify(groupRepositoryMock,times(1)).save(any(Group.class));
+        // Assert
+        Assertions.assertEquals(expectedOutput, actualOutput);
+        verify(groupRepositoryMock, times(1)).save(any(Group.class));
     }
-    
+
 }

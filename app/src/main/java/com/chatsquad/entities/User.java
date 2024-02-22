@@ -15,10 +15,10 @@ public class User extends BaseEntity {
         return name;
     }
 
+    // [1, "ABC"] [1, "ABC"] -> .eq
     public String getUserName() {
         return userName;
     }
-    
 
     @Override
     public int hashCode() {

@@ -21,8 +21,7 @@ public class UserService implements IUserService {
         String line = "";
         String id, name, userName;
         BufferedReader bufferedReader = new BufferedReader(new FileReader(inputFile));
-        while ((line = bufferedReader.readLine()) != null)
-        {
+        while ((line = bufferedReader.readLine()) != null) {
             String[] fileValues = line.split(",");
             id = fileValues[0];
             name = fileValues[1];

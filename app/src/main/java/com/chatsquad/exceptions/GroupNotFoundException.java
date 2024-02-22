@@ -1,12 +1,11 @@
 package com.chatsquad.exceptions;
 
 public class GroupNotFoundException extends RuntimeException {
-    public GroupNotFoundException()
-    {
-     super();
+    public GroupNotFoundException() {
+        super();
     }
-    public GroupNotFoundException(String msg)
-    {
-     super(msg);
+
+    public GroupNotFoundException(String msg) {
+        super(msg);
     }
 }

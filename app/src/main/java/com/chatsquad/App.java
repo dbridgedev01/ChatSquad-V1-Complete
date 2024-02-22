@@ -17,7 +17,7 @@ import com.chatsquad.exceptions.NoSuchCommandException;
 public class App {
 
     // To run the application ./gradlew run --args="INPUT_FILE=input.txt"
-    public static void main(String[] args) { 
+    public static void main(String[] args) {
         List<String> commandLineArgs = new LinkedList<>(Arrays.asList(args));
         String expectedSequence = "INPUT_FILE";
         String actualSequence = args[0].split("=")[0];

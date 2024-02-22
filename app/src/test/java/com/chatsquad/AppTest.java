@@ -18,7 +18,6 @@ public class AppTest {
     private final PrintStream standardOut = System.out;
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
 
-
     @BeforeEach
     public void setUp() {
         System.setOut(new PrintStream(outputStreamCaptor));
@@ -26,28 +25,28 @@ public class AppTest {
 
     @Test
     @DisplayName("Integration Test #1")
-    void runTest1(){
+    void runTest1() {
 
-        //Arrange
-        List<String> arguments= new ArrayList<>(Arrays.asList("INPUT_FILE=input.txt"));
+        // Arrange
+        List<String> arguments = new ArrayList<>(Arrays.asList("INPUT_FILE=input.txt"));
 
-		String expectedOutput = "Users loaded successfully\n"+
-        "Group 1 created successfully\n"+
-        "Group 2 created successfully\n"+
-        "User(s) 7 8 added successfully\n"+
-        "User 2 removed successfully\n"+
-        "HELLO_WORLD Members: rocky - Admin, georgex, milan01, shay11, gini99, bryan\n"+
-        "Cool_Squad Members: serge77 - Admin, milan01, shay11, romero5\n"+
-        "Forbidden\n"+
-        "Group not found\n"+
-        "User not found";
-        //Act
+        String expectedOutput = "Users loaded successfully\n" +
+                "Group 1 created successfully\n" +
+                "Group 2 created successfully\n" +
+                "User(s) 7 8 added successfully\n" +
+                "User 2 removed successfully\n" +
+                "HELLO_WORLD Members: rocky - Admin, georgex, milan01, shay11, gini99, bryan\n" +
+                "Cool_Squad Members: serge77 - Admin, milan01, shay11, romero5\n" +
+                "Forbidden\n" +
+                "Group not found\n" +
+                "User not found";
+        // Act
         App.run(arguments);
 
-        //Assert
-        Assertions.assertEquals(expectedOutput,outputStreamCaptor.toString().trim());
- 
-	}
+        // Assert
+        Assertions.assertEquals(expectedOutput, outputStreamCaptor.toString().trim());
+
+    }
 
     @AfterEach
     public void tearDown() {

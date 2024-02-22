@@ -9,20 +9,20 @@ import com.chatsquad.repositories.IGroupRepository;
 
 public class GroupRepository implements IGroupRepository {
 
-     private final Map<String, Group> groupMap;
-     private int groupId = 0;
+    private final Map<String, Group> groupMap;
+    private int groupId = 0;
 
-    public GroupRepository(){
+    public GroupRepository() {
         groupMap = new HashMap<String, Group>();
     }
 
-    public GroupRepository(Map<String,Group> groupMap){
+    public GroupRepository(Map<String, Group> groupMap) {
         this.groupMap = groupMap;
     }
 
     @Override
     public Group save(Group group) {
-        if(group.getId() == null){
+        if (group.getId() == null) {
             groupId++;
             Group grp = new Group(String.valueOf(groupId), group.getGroupName(), group.getAdmin(), group.getMembers());
             groupMap.put(grp.getId(), grp);
@@ -36,5 +36,5 @@ public class GroupRepository implements IGroupRepository {
     public Optional<Group> findById(String id) {
         return Optional.ofNullable(groupMap.get(id));
     }
-    
+
 }
